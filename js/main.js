@@ -5,19 +5,19 @@ window.onload = () => {
     }
 };
 
-let posicaoInicial;//variavel para capturar a posicao
+let posicaoInicial;
 const capturarLocalizacao = document.getElementById('localizacao');
 const latitude = document.getElementById('latitude');
 const longitude = document.getElementById('longitude');
 const map = document.getElementById('mapa');
 
-const sucesso = (posicao) => {//callback de sucesso para captura da posicao
+const sucesso = (posicao) => {
     posicaoInicial = posicao;
     latitude.innerHTML = posicaoInicial.coords.latitude;
     longitude.innerHTML = posicaoInicial.coords.longitude;
 };
 
-const erro = (error) => {//callback de error (falha para captura de localizacao)
+const erro = (error) => {
     let errorMessage;
     switch(error.code){
         case 0:
