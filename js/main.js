@@ -43,22 +43,25 @@ capturarLocalizacao.addEventListener('click', () => {
 
 });
 
-const main = document.querySelector('produtos');
-
-async function postProducts() {
-    const res = await fetch('https://projetofinalteste.lucasgodoy04.repl.co/produtos_api');
-    const data = await res.json();
-    main.innerHTML = data.map(createArticle).join('\n');
-}
-
-function createArticle(produtos){
-    return `
-           <div>
-           <a>${produtos.id}</a>
-           <h2>${produtos.nome}</h2>
-           <h2>R$${produtos.descricao}</h2>
-           <p>${produtos.preco}</p>
-           <img src="${produtos.codigo}"/>
-           </div>
+async function ProdutosAPI(){
+    const response = await fetch("https://projetofinalteste.lucasgodoy04.repl.co/produtos_api")
+    const data = await response.json();
+    const apiList = document.getElementById("apiList")
+ 
+    console.log(data)
+ 
+    data.map((produto) => {
+     apiList.innerHTML += 
     `
-}
+    <div id="produtos">
+     <h2>${produto.titulo}</h2>
+     <h2>R$ ${produto.preco},00</h2>
+     <h3>${produto.descricao}</h3>
+     <br/> <img id="img" width="300px" src=${produto.imagem}></img>
+    </div>
+     `
+    })
+    
+    
+ 
+ }
