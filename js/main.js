@@ -63,20 +63,21 @@ capturarLocalizacao.addEventListener('click', () => {
 //     })
 // }
 
-const main = document.querySelector('produtos');
-async function postProdutos() {
-    const res = await fetch('https://projetofinalteste.lucasgodoy04.repl.co/produtos_api');
+async function postNews() {
+    const res = await fetch(url);
     const data = await res.json();
-    main.innerHTML = data.map(createList).join('\n');
+    main.innerHTML = data.map(createArticle).join('\n');
 }
 
-function createList(produto){
+let url = "https://bd-produtos-react-app.cyclic.app";
+const main = document.querySelector('main');
+
+function createArticle(produtos){
     return `
-           <div>
-                    <img src="${produto.image}"/>
-                    <h2>${produto.name}</h2>
-                    <h2>R$${produto.value}</h2>
-                    <p>${produto.text}</p>
+           <div class="article">
+                <a target="_blank">
+                    <img src="${produtos.titulo}" class="image" alt="${produtos.img}"/>
+                    <h2>${produtos.preco}</h2>
                 </a>
            </div>
     `
