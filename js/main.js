@@ -55,7 +55,7 @@ async function ProdutosAPI(){
     `
     <div id="produtos">
      <h2>${produto.nome}</h2>
-     <h2>R$ ${produto.preco},00</h2>
+     <h2>R$ ${produto.preco}</h2>
      <h3>${produto.descricao}</h3>
      <br/> <img id="img" width="300px" src=${produto.codigo}></img>
     </div>
