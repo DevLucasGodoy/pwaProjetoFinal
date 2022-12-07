@@ -39,7 +39,7 @@ const erro = (error) => {//callback de error (falha para captura de localizacao)
 capturarLocalizacao.addEventListener('click', () => {
     navigator.geolocation.getCurrentPosition(sucesso, erro);
 
-    map.src = "http://maps.google.com/maps?q="+ posicaoInicial.coords.latitude+"," + posicaoInicial.coords.longitude +"&z=16&output=embed"+"," 
+    map.src = "http://maps.google.com/maps?q="+ posicaoInicial.coords.latitude + "," +posicaoInicial.coords.longitude +"&z=16&output=embed"
 
 });
 
