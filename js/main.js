@@ -72,12 +72,12 @@ async function postNews() {
 let url = "https://bd-produtos-react-app.cyclic.app";
 const main = document.querySelector('main');
 
-function createArticle(produtos){
+function createArticle(article){
     return `
            <div class="article">
                 <a target="_blank">
-                    <img src="${produtos.titulo}" class="image" alt="${produtos.img}"/>
-                    <h2>${produtos.preco}</h2>
+                    <img src="${article.titulo}" class="image" alt="${article.img}"/>
+                    <h2>${article.preco}</h2>
                 </a>
            </div>
     `
