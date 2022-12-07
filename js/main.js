@@ -43,22 +43,41 @@ capturarLocalizacao.addEventListener('click', () => {
 
 });
 
-async function ProdutosAPI(){
-    const response = await fetch("https://projetofinalteste.lucasgodoy04.repl.co/produtos_api")
-    const data = await response.json();
-    const apiList = document.getElementById("apiList")
+// async function ProdutosAPI(){
+//     const response = await fetch("https://projetofinalteste.lucasgodoy04.repl.co/produtos_api")
+//     const data = await response.json();
+//     const apiList = document.getElementById("apiList")
  
-    console.log(data)
+//     console.log(data)
  
-    data.map((produto) => {
-     apiList.innerHTML += 
+//     data.map((produto) => {
+//      apiList.innerHTML += 
+//     `
+//     <div id="produtos">
+//      <h2>${produto.nome}</h2>
+//      <h2>R$ ${produto.preco}</h2>
+//      <h3>${produto.descricao}</h3>
+//      <br/> <img id="img" width="300px" src=${produto.codigo}></img>
+//     </div>
+//      `
+//     })
+// }
+
+const main = document.querySelector('produtos');
+async function postProdutos() {
+    const res = await fetch('https://projetofinalteste.lucasgodoy04.repl.co/produtos_api');
+    const data = await res.json();
+    main.innerHTML = data.map(createList).join('\n');
+}
+
+function createList(produto){
+    return `
+           <div>
+                    <img src="${produto.image}"/>
+                    <h2>${produto.name}</h2>
+                    <h2>R$${produto.value}</h2>
+                    <p>${produto.text}</p>
+                </a>
+           </div>
     `
-    <div id="produtos">
-     <h2>${produto.nome}</h2>
-     <h2>R$ ${produto.preco}</h2>
-     <h3>${produto.descricao}</h3>
-     <br/> <img id="img" width="300px" src=${produto.codigo}></img>
-    </div>
-     `
-    })
- }
+}
