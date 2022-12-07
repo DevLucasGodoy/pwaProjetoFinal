@@ -43,42 +43,22 @@ capturarLocalizacao.addEventListener('click', () => {
 
 });
 
-// async function ProdutosAPI(){
-//     const response = await fetch("https://projetofinalteste.lucasgodoy04.repl.co/produtos_api")
-//     const data = await response.json();
-//     const apiList = document.getElementById("apiList")
+async function ProdutosAPI(){
+    const response = await fetch("https://projetofinalteste.lucasgodoy04.repl.co/produtos_api")
+    const data = await response.json();
+    const apiList = document.getElementById("apiList")
  
-//     console.log(data)
+    console.log(data)
  
-//     data.map((produto) => {
-//      apiList.innerHTML += 
-//     `
-//     <div id="produtos">
-//      <h2>${produto.nome}</h2>
-//      <h2>R$ ${produto.preco}</h2>
-//      <h3>${produto.descricao}</h3>
-//      <br/> <img id="img" width="300px" src=${produto.codigo}></img>
-//     </div>
-//      `
-//     })
-// }
-
-async function postNews() {
-    const res = await fetch(url);
-    const data = await res.json();
-    main.innerHTML = data.map(createArticle).join('\n');
-}
-
-let url = "https://bd-produtos-react-app.cyclic.app";
-const main = document.querySelector('main');
-
-function createArticle(article){
-    return `
-           <div class="article">
-                <a target="_blank">
-                    <img src="${article.titulo}" class="image" alt="${article.img}"/>
-                    <h2>${article.preco}</h2>
-                </a>
-           </div>
+    data.map((produto) => {
+     apiList.innerHTML += 
     `
+    <div id="produtos">
+     <h2>${produto.nome}</h2>
+     <h2>R$ ${produto.preco}</h2>
+     <h3>${produto.descricao}</h3>
+     <br/> <img id="img" width="300px" src=${produto.codigo}></img>
+    </div>
+     `
+    })
 }
