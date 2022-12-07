@@ -1,12 +1,17 @@
-const OFFLINE_VERSION = 1;
-const CACHE_NAME = "APP-RGSHOP";
+const CACHE_NAME = "PWA";
 const OFFLINE_URL = "/fallback";
+
+let filesToCache = ["/", "./index.html", "./css/style.css", "./js/main.js", "./pages/fallback.js", "./pages/localização.js", "./pages/produtos.js"];
 
 self.addEventListener("install", (event) => {
     event.waitUntil(
         (async () => {
             const cache = await caches.open(CACHE_NAME);
             await cache.add(new Request(OFFLINE_URL, { cache: "reload" }));
+            
+            caches.open(cacheName).then(function (cache) {
+            return cache.addAll(filesToCache);
+            })
         })()
     );
 });
